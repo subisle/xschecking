@@ -1,0 +1,53 @@
+# 授权系统配置文件
+server:
+  port: 8080
+  mode: debug # debug, release
+  
+database:
+  host: localhost
+  port: 3306
+  user: root
+  password: your_password
+  dbname: auth_system
+  charset: utf8mb4
+  parse_time: true
+  max_idle_conns: 10
+  max_open_conns: 100
+
+redis:
+  host: localhost
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 10
+
+jwt:
+  secret: your_jwt_secret_key_change_in_production
+  expire_hours: 24
+  issuer: auth-system
+
+captcha:
+  luckycola_api_url: https://api.luckycola.com.cn
+  luckycola_app_id: your_app_id
+  luckycola_app_secret: your_app_secret
+  expire_minutes: 5
+
+email:
+  smtp_host: smtp.example.com
+  smtp_port: 587
+  username: noreply@example.com
+  password: your_email_password
+  from_name: 授权系统
+  code_expire_minutes: 5
+  code_length: 6
+
+rate_limit:
+  login_max_attempts: 5
+  login_block_minutes: 30
+  register_max_per_ip_per_day: 10
+  email_code_max_per_hour: 5
+
+risk:
+  enable: true
+  max_login_failures: 3
+  account_freeze_minutes: 60
